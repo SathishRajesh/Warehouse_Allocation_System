@@ -38,7 +38,7 @@ A Spring Boot application developed to manage product inventory and warehouse st
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone:https://github.com/SathishRajesh/Warehouse_Allocation_System.git
 ```
 
 ### Create Database
