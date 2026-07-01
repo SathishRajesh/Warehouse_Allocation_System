@@ -1,0 +1,243 @@
+{
+  "info": {
+    "name": "Warehouse Allocation System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Warehouse",
+      "item": [
+        {
+          "name": "Create Warehouse",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/warehouses",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Warehouse A\",\n  \"location\": \"Chennai\",\n  \"capacity\": 1000\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Warehouses",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/warehouses"
+          }
+        },
+        {
+          "name": "Get Warehouse By ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/warehouses/1"
+          }
+        },
+        {
+          "name": "Get Active Warehouses",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/warehouses/active"
+          }
+        },
+        {
+          "name": "Get All Warehouses Paged",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/warehouses/paged?page=0&size=10&sort=name"
+          }
+        },
+        {
+          "name": "Update Warehouse",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:8080/api/warehouses/1",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Warehouse A Updated\",\n  \"location\": \"Bangalore\",\n  \"capacity\": 2000\n}"
+            }
+          }
+        },
+        {
+          "name": "Activate Warehouse",
+          "request": {
+            "method": "PATCH",
+            "url": "http://localhost:8080/api/warehouses/1/activate"
+          }
+        },
+        {
+          "name": "Deactivate Warehouse",
+          "request": {
+            "method": "PATCH",
+            "url": "http://localhost:8080/api/warehouses/1/deactivate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/products",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"iPhone 15\",\n  \"sku\": \"APPL-IPH-15\",\n  \"totalStock\": 500\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/products"
+          }
+        },
+        {
+          "name": "Get Product By ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/products/1"
+          }
+        },
+        {
+          "name": "Search Product By Name",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/products/search?name=iphone"
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:8080/api/products/1",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"iPhone 16\",\n  \"sku\": \"APPL-IPH-16\",\n  \"totalStock\": 300\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/api/products/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory",
+      "item": [
+        {
+          "name": "Add Stock",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/inventory/add-stock?warehouseId=1&productId=1&quantity=200"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Allocation",
+      "item": [
+        {
+          "name": "Allocate Stock (Specific Warehouse)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/allocations",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"warehouseId\": 1,\n  \"quantity\": 50\n}"
+            }
+          }
+        },
+        {
+          "name": "Allocate Stock (Auto Warehouse)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/allocations",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"quantity\": 30\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Allocations",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/allocations"
+          }
+        },
+        {
+          "name": "Get Allocations Paged",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/allocations/paged?page=0&size=10"
+          }
+        },
+        {
+          "name": "Get Allocations By Product",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/allocations/product/1"
+          }
+        },
+        {
+          "name": "Get Allocations By Warehouse",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/allocations/warehouse/1"
+          }
+        },
+        {
+          "name": "Search Allocations",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/allocations/search?productId=1&page=0&size=5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stock Transfer",
+      "item": [
+        {
+          "name": "Transfer Stock",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/transfers",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceWarehouseId\": 1,\n  \"targetWarehouseId\": 2,\n  \"productId\": 1,\n  \"quantity\": 20\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Transfers",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/transfers"
+          }
+        },
+        {
+          "name": "Get Transfers By Warehouse",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/transfers/warehouse/1"
+          }
+        }
+      ]
+    }
+  ]
+}
